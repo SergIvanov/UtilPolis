@@ -256,7 +256,7 @@ pb1.StepBy(1);
         begin
           n := n + 1;
           for j := 0 to 30 do
-            if (j=4) or (j=5) or (j=6) then
+            if (j=3) or (j=4) or (j=5) then
             ItogWorkSheet.Cells[n, j + 1] := GetFIO(fdqryRead.Fields[j].AsString)
             else
             ItogWorkSheet.Cells[n, j + 1] := fdqryRead.Fields[j].AsString;
@@ -269,7 +269,7 @@ pb1.StepBy(1);
 
           ItogWorkSheetNOT.Select();
           for j := 0 to 30 do
-          if (j=4) or (j=5) or (j=6) then
+          if (j=3) or (j=4) or (j=5) then
             ItogWorkSheetNOT.Cells[p, j + 1] :=GetFIO(fdqryRead.Fields[j].AsString)
            else
             ItogWorkSheetNOT.Cells[p, j + 1] := fdqryRead.Fields[j].AsString;
