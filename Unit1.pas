@@ -201,16 +201,21 @@ pb1.StepBy(1);
    xIniFile := TIniFile.Create('.\config.ini');
 
   try
-
     xIniFile.ReadSectionValues('connection', con1.Params);
-    Try
-     con1.Open();
-    Except
-     Exit;
-    End;
+    try
+      con1.Open();
+    except
+      on E: Exception do
+      begin
+
+        messageDlg(e.message,mtError,[mbOK],0);
+        exit;
+      end;
+    end;
 
 
  finally
+
     xIniFile.Free;
 
   end;
