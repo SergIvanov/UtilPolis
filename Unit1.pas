@@ -10,7 +10,7 @@ uses
   FireDAC.Phys, FireDAC.Phys.FB, FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.IBBase,System.IniFiles,
-  Vcl.ComCtrls;
+  Vcl.ComCtrls, Vcl.Buttons;
 
 type
   TForm1 = class(TForm)
@@ -37,12 +37,12 @@ type
     fdphysfbdrvrlnk1: TFDPhysFBDriverLink;
     fdtrnsctn1: TFDTransaction;
     fdqryRead: TFDQuery;
-    btn3: TButton;
     pb1: TProgressBar;
+    btn4: TSpeedButton;
     procedure btn1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btn2Click(Sender: TObject);
-    procedure btn3Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -261,6 +261,14 @@ pb1.StepBy(1);
             else
             ItogWorkSheet.Cells[n, j + 1] := fdqryRead.Fields[j].AsString;
 
+            if btn4.Down = True then
+               begin
+            ItogWorkSheet.Cells[n, 32] := FData[I, 7];
+            ItogWorkSheet.Cells[n, 33] := FData[I, 8];
+            ItogWorkSheet.Cells[n, 34] := FData[I, 9];
+               end;
+
+
         end
 
         else
@@ -277,7 +285,12 @@ pb1.StepBy(1);
                       ItogWorkSheetNOT.Cells[p,2]:=FData[I,StrToInt(edt3.Text)];
                       ItogWorkSheetNOT.Cells[p,3]:=FData[I,StrToInt(edt4.Text)];
                       ItogWorkSheetNOT.Cells[p,4]:=FData[I,StrToInt(edt5.Text)];    }
-
+                      if btn4.Down = True then
+               begin
+            ItogWorkSheetNOT.Cells[p, 32] := FData[I, 7];
+            ItogWorkSheetNOT.Cells[p, 33] := FData[I, 8];
+            ItogWorkSheetNOT.Cells[p, 34] := FData[I, 9];
+               end;
         end;
       end
       else
@@ -288,6 +301,12 @@ pb1.StepBy(1);
         ItogWorkSheetNOT.Cells[p, 5] := FData[I, StrToInt(edt3.Text)];
         ItogWorkSheetNOT.Cells[p, 6] := FData[I, StrToInt(edt4.Text)];
         ItogWorkSheetNOT.Cells[p, 7] := FData[I, StrToInt(edt5.Text)];
+         if btn4.Down = True then
+               begin
+        ItogWorkSheetNOT.Cells[p, 32] := FData[I, 7];
+        ItogWorkSheetNOT.Cells[p, 33] := FData[I, 8];
+        ItogWorkSheetNOT.Cells[p, 34] := FData[I, 9];
+              end;
 
       end;
 
@@ -306,14 +325,28 @@ pb1.StepBy(1);
 
 end;
 
-procedure TForm1.btn3Click(Sender: TObject);
+procedure TForm1.btn4Click(Sender: TObject);
 begin
-edt2.Text:='3';
+
+
+
+   if( btn4.AllowAllUp ) then
+  begin
+    edt2.Text:='3';
 edt3.Text:='4';
 edt4.Text:='5';
 edt5.Text:='6';
 edt6.Text:='5';
 edt7.Text:='5';
+
+
+    btn4.AllowAllUp := False;
+    btn4.Down := True;
+  end else
+  begin
+    btn4.AllowAllUp := True;
+    btn4.Down := False;
+  end;
 
 end;
 

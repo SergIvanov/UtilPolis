@@ -1,9 +1,10 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1059#1090#1080#1083#1080#1090#1072' '#1087#1088#1086#1074#1077#1088#1082#1080' '#1092#1072#1081#1083#1086#1074' '#1074' '#1073#1072#1079#1077' '#1079#1072#1089#1090#1088#1072#1093#1086#1074#1072#1085#1085#1099#1093
   ClientHeight = 272
-  ClientWidth = 987
+  ClientWidth = 672
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -69,6 +70,16 @@ object Form1: TForm1
     Width = 106
     Height = 13
     Caption = #1053#1086#1084#1077#1088' '#1089#1090#1088#1086#1082#1080' '#1082#1086#1085#1094#1072':'
+  end
+  object btn4: TSpeedButton
+    Left = 544
+    Top = 25
+    Width = 107
+    Height = 23
+    AllowAllUp = True
+    GroupIndex = -1
+    Caption = #1054#1057#1052#1055'_'#1085#1077#1080#1076#1077#1085
+    OnClick = btn4Click
   end
   object edt1: TEdit
     Left = 16
@@ -147,15 +158,6 @@ object Form1: TForm1
     State = cbChecked
     TabOrder = 9
   end
-  object btn3: TButton
-    Left = 555
-    Top = 25
-    Width = 101
-    Height = 25
-    Caption = #1054#1057#1052#1055'_'#1085#1077#1080#1076#1077#1085
-    TabOrder = 10
-    OnClick = btn3Click
-  end
   object pb1: TProgressBar
     Left = 18
     Top = 194
@@ -164,11 +166,11 @@ object Form1: TForm1
     ParentShowHint = False
     Step = 1
     ShowHint = False
-    TabOrder = 11
+    TabOrder = 10
   end
   object dlgOpen1: TOpenDialog
-    Left = 851
-    Top = 25
+    Left = 245
+    Top = 221
   end
   object con1: TFDConnection
     Params.Strings = (
@@ -181,27 +183,27 @@ object Form1: TForm1
       'CharacterSet=WIN1251'
       'DriverID=FB')
     LoginPrompt = False
-    Left = 930
-    Top = 89
+    Left = 381
+    Top = 228
   end
   object fdphysfbdrvrlnk1: TFDPhysFBDriverLink
     VendorLib = 'C:\'#1080#1089#1093#1086#1076#1085#1080#1082#1080'\ishodniki\Debug\Win32\fbclient\fbclient.dll'
     Embedded = True
-    Left = 930
-    Top = 25
+    Left = 317
+    Top = 227
   end
   object fdtrnsctn1: TFDTransaction
     Options.Isolation = xiSnapshot
     Options.ReadOnly = True
     Connection = con1
-    Left = 931
-    Top = 145
+    Left = 436
+    Top = 229
   end
   object fdqryRead: TFDQuery
     Connection = con1
     Transaction = fdtrnsctn1
-    Left = 937
-    Top = 206
+    Left = 499
+    Top = 232
     ParamData = <
       item
         Name = 'ser'
